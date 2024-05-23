@@ -7,7 +7,7 @@ public class SocialHandlerTest {
 
     @Test
     @DisplayName("checking if handle was created succesfully")
-    public void testCreateHandle(){
+    public void testCreateHandle() {
         SocialHandler twitter = new SocialHandler();
 
         twitter.createHandle("12345678910");
@@ -17,7 +17,7 @@ public class SocialHandlerTest {
 
     @Test
     @DisplayName("check if handle has 9 characters not including @")
-    public void testHandle9OrLess(){
+    public void testHandle9OrLess() {
         SocialHandler twitter = new SocialHandler();
         twitter.createHandle("12345678910");
         assertEquals(9, twitter.getUsername().length() - 1);
@@ -25,7 +25,7 @@ public class SocialHandlerTest {
 
     @Test
     @DisplayName("check if handle is null")
-    public void testHandleNull(){
+    public void testHandleNull() {
         SocialHandler twitter = new SocialHandler();
         twitter.createHandle("Mike Jones");
         assertNull(twitter.getUsername());
@@ -33,22 +33,45 @@ public class SocialHandlerTest {
 
     @Test
     @DisplayName("check if handle was added despite multiple attempts")
-    public void testAddhandle(){
+    public void testAddhandle() {
         SocialHandler twitter = new SocialHandler();
         twitter.createHandle("Mike Jones");
         twitter.createHandle("mike Jones");
         twitter.createHandle("mikejones");
 
-        assertEquals("@mikejones",twitter.getUsername());
+        assertEquals("@mikejones", twitter.getUsername());
     }
 
     @Test
     @DisplayName("Test if name was added to original names")
-    public void testOriginalNames(){
+    public void testOriginalNames() {
         SocialHandler twitter = new SocialHandler();
         twitter.createHandle("mikejones");
 
         assertTrue(twitter.getOriginalNames().contains(twitter.getUsername()));
     }
+
+    @Test
+    @DisplayName("Test if handle was removed")
+    public void testRemoveHandle() {
+        SocialHandler twitter = new SocialHandler();
+        twitter.createHandle("mikejones");
+
+        twitter.removeHandle("mikejones");
+
+        assertEquals("", twitter.getUsername());
+    }
+
+    @Test
+    @DisplayName("Test if handle was updated")
+    public void testUpdateHandle(){
+        SocialHandler twitter = new SocialHandler();
+        twitter.createHandle("mikejones");
+
+        twitter.updateHandle("rashawn");
+
+        assertEquals("@rashawn",twitter.getUsername());
+    }
+
 
 }

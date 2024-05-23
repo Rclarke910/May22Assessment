@@ -4,7 +4,11 @@ public class Main {
 
         SocialHandler twitter = new SocialHandler();
 
-        twitter.createHandle("abcdEfghijklmnop");
+        twitter.createHandle("abcdefghijklmnop");
+
+        twitter.removeHandle("abcdefghi");
+
+        twitter.updateHandle("rashawnclarke");
 
         System.out.println(twitter.getUsername());
     }

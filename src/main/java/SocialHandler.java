@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SocialHandler {
 
@@ -20,7 +21,7 @@ public class SocialHandler {
         StringBuilder str = new StringBuilder("@");
 
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < name.length() && i < 9; i++) {
             if (Character.isUpperCase(name.charAt(i))) {
                 System.out.println("All letters must be lower case");
                 return;
@@ -33,6 +34,17 @@ public class SocialHandler {
         if(!originalNames.contains(str.toString())){
             originalNames.add(str.toString());
         }
+    }
+
+    public void removeHandle(String name){
+        StringBuilder string = new StringBuilder("@");
+        if(Objects.equals(this.username, string.append(name).toString())){
+            this.username = "";
+        }
+    }
+
+    public void updateHandle(String name){
+        createHandle(name);
     }
 
 
