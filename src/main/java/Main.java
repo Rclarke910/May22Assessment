@@ -10,6 +10,9 @@ public class Main {
 
         twitter.updateHandle("rashawnclarke");
 
+
         System.out.println(twitter.getUsername());
+        System.out.println("============");
+        twitter.printUsernamesInFile();
     }
 }
